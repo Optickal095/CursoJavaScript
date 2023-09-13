@@ -1,0 +1,408 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&family=Righteous&display=swap");
+/* COLORS */
+/* MIXINS */
+* {
+  box-sizing: border-box;
+  font-family: "Montserrat";
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* NAVBAR */
+.containerHeader {
+  background-color: #645cbb;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+.containerHeader header {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+.containerHeader header .logo a {
+  font-family: "Righteous";
+  font-size: 36px;
+  color: #fff;
+  text-decoration: none;
+  transition: 0.5s;
+}
+.containerHeader header .logo a:hover {
+  color: #bface2;
+}
+.containerHeader header nav ul li a {
+  text-align: none;
+  color: #fff;
+  margin: 0 15px;
+  pad: 3px;
+  transition: 0.5s;
+  text-decoration: none;
+}
+.containerHeader header nav ul li a:hover {
+  color: #bface2;
+}
+
+/* HOME */
+.home {
+  background: linear-gradient(to top, rgba(30, 35, 38, 0.8), rgb(30, 35, 38)), url(../images/background.jpg);
+  background-size: cover;
+  height: 100vh;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+.home .containerBanner {
+  padding: 20px;
+  background-color: #1e2326;
+  max-width: 350px;
+  margin: auto;
+  text-align: center;
+  border-radius: 40px;
+}
+.home .containerBanner img {
+  margin-top: 40px;
+  border: 10px solid #645cbb;
+  display: block;
+  width: 80%;
+  margin: auto;
+  border-radius: 100%;
+}
+.home .containerBanner h1 {
+  margin-top: 40px;
+  font-size: 42px;
+  font-family: "Montserrat";
+  font-weight: 900;
+}
+.home .containerBanner h2 {
+  font-size: 15px;
+  font-weight: normal;
+}
+.home .containerBanner .socials a {
+  color: #fff;
+  display: inline-block;
+  text-decoration: none;
+  border: 1px solid #fff;
+  border-radius: 100%;
+  width: 42px;
+  height: 42px;
+  line-height: 42px;
+  margin: 40px 5px;
+  font-size: 20px;
+  transition: 0.3s;
+}
+.home .containerBanner .socials a:hover {
+  background-color: #645cbb;
+}
+
+/* ABOUT */
+.about {
+  background-color: #a5a2bd;
+  color: #fff;
+  padding: 100px 20px;
+}
+.about .containerAbout {
+  max-width: 1100px;
+  margin: auto;
+}
+.about .containerAbout h2 {
+  font-size: 48px;
+  font-family: "Righteous";
+  text-align: center;
+  padding: 20px 0;
+}
+.about .containerAbout p {
+  font: 18px;
+  line-height: 22px;
+  margin-bottom: 20px;
+}
+.about .containerAbout p span {
+  color: #645cbb;
+  font-weight: bold;
+}
+.about .row .col h3 {
+  font-size: 28px;
+  font-family: "Righteous";
+  margin-bottom: 25px;
+}
+.about .row .col ul {
+  list-style: none;
+}
+.about .row .col ul li {
+  margin: 12px 0;
+}
+.about .row .col ul li strong {
+  display: inline-block;
+  width: 150px;
+}
+.about .row .col ul li .role {
+  color: #645cbb;
+}
+.about .row .col ul li span {
+  background-color: #645cbb;
+  padding: 3px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.about .row .col .containerInterests {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.about .row .col .card {
+  background-color: #252a2e;
+  color: #fff;
+  border-radius: 10px;
+  margin: 0 15px 15px 0;
+  transition: 0.3s;
+  flex: 1 0 100px;
+  min-width: 150px;
+}
+.about .row .col .card:hover {
+  background-color: #645cbb;
+}
+.about .row .col .card i {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.about .row .col .card .card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+.about button {
+  cursor: pointer;
+  background-color: transparent;
+  border: 2px solid #fff;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: block;
+  margin: 20px auto;
+  padding: 10px 22px;
+  font-size: 16px;
+  color: #fff;
+  position: relative;
+  z-index: 10;
+}
+.about button .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #645cbb;
+  z-index: -1;
+  transition: 1s;
+}
+.about button:hover .overlay {
+  width: 100%;
+}
+
+/* CONTACT */
+.contact {
+  background-image: url("../images/contact_bg.png");
+  background-color: #212e5c;
+  color: #fff;
+  padding: 100px 0;
+}
+.contact .containerContact {
+  max-width: 1100px;
+  margin: auto;
+}
+.contact .containerContact h2 {
+  font-size: 48px;
+  font-family: "Righteous";
+  text-align: center;
+  padding: 20px 0;
+}
+.contact .containerContact .col input,
+.contact .containerContact .col textarea {
+  display: block;
+  width: 100%;
+  padding: 18px;
+  border: none;
+  margin-bottom: 20px;
+  background-color: #0b0f1e;
+  color: #fff;
+  font-size: 18px;
+}
+.contact .containerContact button {
+  cursor: pointer;
+  background-color: transparent;
+  border: 2px solid #fff;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: block;
+  margin: 20px auto;
+  padding: 10px 22px;
+  font-size: 16px;
+  color: #fff;
+  position: relative;
+  z-index: 10;
+}
+.contact .containerContact button .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #645cbb;
+  z-index: -1;
+  transition: 1s;
+}
+.contact .containerContact button:hover .overlay {
+  width: 100%;
+}
+.contact .containerContact .col .info {
+  position: static;
+  background-color: #0b0f1e;
+  padding: 20px;
+  max-width: 300px;
+}
+.contact .containerContact .col .info ul {
+  list-style: none;
+}
+.contact .containerContact .col .info ul li {
+  margin-bottom: 20px;
+}
+.contact .containerContact .col .info ul li i {
+  color: #645cbb;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+/* SKILLS */
+.skills {
+  background-color: #252a2e;
+  color: #fff;
+  padding: 100px 0;
+}
+.skills .containerSkills {
+  max-width: 1100px;
+  margin: auto;
+}
+.skills .containerSkills h2 {
+  font-size: 48px;
+  font-family: "Righteous";
+  text-align: center;
+  padding: 20px 0;
+}
+.skills .containerSkills .row .col {
+  margin-bottom: 20px;
+}
+.skills .containerSkills .row .col h3 {
+  font-size: 28px;
+  font-family: "Righteous";
+  margin-bottom: 25px;
+}
+.skills .containerSkills .skill .skillBar {
+  height: 8px;
+  position: relative;
+  margin-bottom: 30px;
+}
+.skills .containerSkills .skill .skillBar .progress {
+  background-color: #1e2326;
+}
+.skills .containerSkills .skill .skillBar .progress .progress-bar {
+  background-color: #645cbb;
+}
+.skills .containerSkills .skill .skillBar span {
+  height: 40px;
+  width: 40px;
+  background-color: #212e5c;
+  border-radius: 50px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+}
+.skills .containerSkills .skill .skillBar span.progress-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  color: #fff;
+}
+
+/* PROJECTS */
+.projects {
+  background-color: #252a2e;
+  color: #fff;
+  padding: 100px 0;
+}
+.projects .containerProjects {
+  max-width: 1100px;
+  margin: auto;
+}
+.projects .containerProjects h2 {
+  font-size: 48px;
+  font-family: "Righteous";
+  text-align: center;
+  padding: 20px 0;
+}
+.projects .containerProjects .row .col {
+  margin-bottom: 20px;
+}
+.projects .containerProjects .row .col h3 {
+  font-size: 28px;
+  font-family: "Righteous";
+  margin-bottom: 25px;
+}
+.projects .containerProjects .project-image {
+  max-width: 50%;
+  height: auto;
+}
+
+/* FOOTER */
+footer {
+  background-color: #252a2e;
+  color: #fff;
+  padding: 50px 0 30px 0;
+  text-align: center;
+  position: relative;
+  width: 100%;
+}
+footer .socials {
+  margin-bottom: 20px;
+}
+footer .socials a {
+  color: #fff;
+  display: inline-block;
+  text-decoration: none;
+  border: 1px solid #fff;
+  border-radius: 100%;
+  width: 42px;
+  height: 42px;
+  line-height: 42px;
+  margin: 40px 5px;
+  font-size: 20px;
+  transition: 0.3s;
+}
+footer .socials a:hover {
+  background-color: #645cbb;
+}
+footer .up {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-color: #645cbb;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -25px;
+  border-radius: 50%;
+  line-height: 50px;
+  font-size: 18px;
+}/*# sourceMappingURL=style.css.map */

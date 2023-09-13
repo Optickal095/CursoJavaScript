@@ -1,0 +1,472 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&family=Righteous&display=swap");
+
+/* COLORS */
+$primary-color: #645cbb;
+$secondary-color: #252a2e;
+$third-color: #212e5c;
+
+/* MIXINS */
+@mixin h2-style {
+  font-size: 48px;
+  font-family: "Righteous";
+  text-align: center;
+  padding: 20px 0;
+}
+
+@mixin container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Montserrat";
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* NAVBAR */
+.containerHeader {
+  background-color: $primary-color;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 99;
+
+  header {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+
+    .logo a {
+      font-family: "Righteous";
+      font-size: 36px;
+      color: #fff;
+      text-decoration: none;
+      transition: 0.5s;
+
+      &:hover {
+        color: #bface2;
+      }
+    }
+
+    nav ul li a {
+      text-align: none;
+      color: #fff;
+      margin: 0 15px;
+      pad: 3px;
+      transition: 0.5s;
+      text-decoration: none;
+
+      &:hover {
+        color: #bface2;
+      }
+    }
+  }
+}
+
+/* HOME */
+.home {
+  background: linear-gradient(
+      to top,
+      rgba(30, 35, 38, 0.8),
+      rgba(30, 35, 38, 1)
+    ),
+    url(../images/background.jpg);
+  background-size: cover;
+  height: 100vh;
+  color: #fff;
+  display: flex;
+  align-items: center;
+
+  .containerBanner {
+    padding: 20px;
+    background-color: #1e2326;
+    max-width: 350px;
+    margin: auto;
+    text-align: center;
+    border-radius: 40px;
+
+    img {
+      margin-top: 40px;
+      border: 10px solid $primary-color;
+      display: block;
+      width: 80%;
+      margin: auto;
+      border-radius: 100%;
+    }
+
+    h1 {
+      margin-top: 40px;
+      font-size: 42px;
+      font-family: "Montserrat";
+      font-weight: 900;
+    }
+
+    h2 {
+      font-size: 15px;
+      font-weight: normal;
+    }
+
+    .socials a {
+      color: #fff;
+      display: inline-block;
+      text-decoration: none;
+      border: 1px solid #fff;
+      border-radius: 100%;
+      width: 42px;
+      height: 42px;
+      line-height: 42px;
+      margin: 40px 5px;
+      font-size: 20px;
+      transition: 0.3s;
+
+      &:hover {
+        background-color: $primary-color;
+      }
+    }
+  }
+}
+
+/* ABOUT */
+.about {
+  background-color: #a5a2bd;
+  color: #fff;
+  padding: 100px 20px;
+
+  .containerAbout {
+    @include container;
+
+    h2 {
+      @include h2-style;
+    }
+
+    p {
+      font: 18px;
+      line-height: 22px;
+      margin-bottom: 20px;
+    }
+
+    p span {
+      color: #645cbb;
+      font-weight: bold;
+    }
+  }
+
+  .row .col h3 {
+    font-size: 28px;
+    font-family: "Righteous";
+    margin-bottom: 25px;
+  }
+
+  .row .col ul {
+    list-style: none;
+
+    li {
+      margin: 12px 0;
+      strong {
+        display: inline-block;
+        width: 150px;
+      }
+
+      .role {
+        color: $primary-color;
+      }
+
+      span {
+        background-color: $primary-color;
+        padding: 3px;
+        font-weight: bold;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  .row .col .containerInterests {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .row .col .card {
+    background-color: $secondary-color;
+    color: #fff;
+    border-radius: 10px;
+    margin: 0 15px 15px 0;
+    transition: 0.3s;
+    flex: 1 0 100px;
+    min-width: 150px;
+
+    &:hover {
+      background-color: $primary-color;
+    }
+
+    i {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+    }
+  }
+
+  button {
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid #fff;
+    width: fit-content;
+    display: block;
+    margin: 20px auto;
+    padding: 10px 22px;
+    font-size: 16px;
+    color: #fff;
+    position: relative;
+    z-index: 10;
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background-color: $primary-color;
+      z-index: -1;
+      transition: 1s;
+    }
+
+    &:hover {
+      .overlay {
+        width: 100%;
+      }
+    }
+  }
+}
+
+/* CONTACT */
+.contact {
+  background-image: url("../images/contact_bg.png");
+  background-color: $third-color;
+  color: #fff;
+  padding: 100px 0;
+
+  .containerContact {
+    @include container;
+
+    h2 {
+      @include h2-style;
+    }
+
+    .col input,
+    .col textarea {
+      display: block;
+      width: 100%;
+      padding: 18px;
+      border: none;
+      margin-bottom: 20px;
+      background-color: #0b0f1e;
+      color: #fff;
+      font-size: 18px;
+    }
+
+    button {
+      cursor: pointer;
+      background-color: transparent;
+      border: 2px solid #fff;
+      width: fit-content;
+      display: block;
+      margin: 20px auto;
+      padding: 10px 22px;
+      font-size: 16px;
+      color: #fff;
+      position: relative;
+      z-index: 10;
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background-color: $primary-color;
+        z-index: -1;
+        transition: 1s;
+      }
+
+      &:hover {
+        .overlay {
+          width: 100%;
+        }
+      }
+    }
+
+    .col .info {
+      position: static;
+      background-color: #0b0f1e;
+      padding: 20px;
+      max-width: 300px;
+
+      ul {
+        list-style: none;
+
+        li {
+          margin-bottom: 20px;
+
+          i {
+            color: #645cbb;
+            display: inline-block;
+            margin-right: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* SKILLS */
+.skills {
+  background-color: $secondary-color;
+  color: #fff;
+  padding: 100px 0;
+
+  .containerSkills {
+    @include container;
+
+    h2 {
+      @include h2-style;
+    }
+
+    .row .col {
+      margin-bottom: 20px;
+
+      h3 {
+        font-size: 28px;
+        font-family: "Righteous";
+        margin-bottom: 25px;
+      }
+    }
+
+    .skill .skillBar {
+      height: 8px;
+      position: relative;
+      margin-bottom: 30px;
+
+      .progress {
+        background-color: #1e2326;
+
+        .progress-bar {
+          background-color: $primary-color;
+        }
+      }
+
+      span {
+        height: 40px;
+        width: 40px;
+        background-color: $third-color;
+        border-radius: 50px;
+        line-height: 40px;
+        text-align: center;
+        font-size: 14px;
+        color: #fff;
+
+        &.progress-text {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 14px;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+/* PROJECTS */
+.projects {
+  background-color: $secondary-color;
+  color: #fff;
+  padding: 100px 0;
+
+  .containerProjects {
+    @include container;
+
+    h2 {
+      @include h2-style;
+    }
+
+    .row .col {
+      margin-bottom: 20px;
+
+      h3 {
+        font-size: 28px;
+        font-family: "Righteous";
+        margin-bottom: 25px;
+      }
+    }
+
+    .project-image {
+      max-width: 50%;
+      height: auto;
+    }
+  }
+}
+
+/* FOOTER */
+footer {
+  background-color: $secondary-color;
+  color: #fff;
+  padding: 50px 0 30px 0;
+  text-align: center;
+  position: relative;
+  width: 100%;
+
+  .socials {
+    margin-bottom: 20px;
+
+    a {
+      color: #fff;
+      display: inline-block;
+      text-decoration: none;
+      border: 1px solid #fff;
+      border-radius: 100%;
+      width: 42px;
+      height: 42px;
+      line-height: 42px;
+      margin: 40px 5px;
+      font-size: 20px;
+      transition: 0.3s;
+
+      &:hover {
+        background-color: $primary-color;
+      }
+    }
+  }
+
+  .up {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-color: $primary-color;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -25px;
+    border-radius: 50%;
+    line-height: 50px;
+    font-size: 18px;
+  }
+}
