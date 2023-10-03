@@ -35,4 +35,4 @@ Luego de enviar mensajes, se pedirá ingresar un nombre para buscar mensajes env
 
 Si existen, se mostrarán todos los mensajes encontrados con ese nombre.
 
-Para salir del ciclo, se debe escribir no cuando lo solicite
+Para salir del ciclo, se debe escribir no cuando lo solicite.
