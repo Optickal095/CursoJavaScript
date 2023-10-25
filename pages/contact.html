@@ -92,12 +92,12 @@
                   rows="10"
                   placeholder="Mensaje"
                 ></textarea>
+                <button id="enviarMensaje">
+                  Enviar Mensaje<i class="fa-solid fa-paper-plane"
+                    ><span class="overlay"></span
+                  ></i>
+                </button>
               </form>
-              <button>
-                Enviar Mensaje<i class="fa-solid fa-paper-plane"
-                  ><span class="overlay"></span
-                ></i>
-              </button>
             </div>
             <div class="col col-lg-6 justify-content-center">
               <iframe
@@ -123,6 +123,14 @@
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- Nuevo elemento para mostrar mensajes -->
+      <section id="mensajes" class="mensajes">
+        <h2>Mensajes de Contacto</h2>
+        <div id="mensajesContainer">
+          <!-- Los mensajes se mostrarán aquí -->
         </div>
       </section>
     </main>

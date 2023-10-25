@@ -1,86 +1,66 @@
-let mensajesDeContacto = [];
+const form = document.querySelector("form");
+const nombreInput = document.querySelector('input[placeholder="Name"]');
+const telefonoInput = document.querySelector(
+  'input[placeholder="Phone Number"]'
+);
+const emailInput = document.querySelector('input[placeholder="Email"]');
+const motivoInput = document.querySelector('input[placeholder="Subject"]');
+const mensajeInput = document.querySelector("textarea");
+
+let mensajesDeContacto = cargarMensajesDesdeLocalStorage();
+
+function cargarMensajesDesdeLocalStorage() {
+  const mensajesGuardados = localStorage.getItem("mensajesDeContacto");
+  return mensajesGuardados ? JSON.parse(mensajesGuardados) : [];
+}
+
+function guardarMensajesEnLocalStorage() {
+  localStorage.setItem(
+    "mensajesDeContacto",
+    JSON.stringify(mensajesDeContacto)
+  );
+}
 
 function agregarMensaje(nombre, telefono, email, motivo, mensaje) {
-  mensajesDeContacto.push({
-    nombre,
-    telefono,
-    email,
-    motivo,
-    mensaje,
-  });
+  mensajesDeContacto.push({ nombre, telefono, email, motivo, mensaje });
+  guardarMensajesEnLocalStorage();
 }
 
-function mostrarMensajes() {
-  for (let mensaje of mensajesDeContacto) {
-    alert(
-      "El usuario " +
-        mensaje.nombre +
-        " con teléfono " +
-        mensaje.telefono +
-        " y email " +
-        mensaje.email +
-        " dejó un mensaje que tiene el siguiente motivo:\n\n" +
-        mensaje.motivo +
-        "\n\ny el mensaje es el siguiente:\n\n" +
-        mensaje.mensaje
-    );
-  }
-}
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
 
-function buscarPorNombre(nombreBuscado) {
-  let resultados = mensajesDeContacto.filter(
-    (mensaje) => mensaje.nombre === nombreBuscado
-  );
-  return resultados;
-}
+  const nombre = nombreInput.value;
+  const telefono = telefonoInput.value;
+  const email = emailInput.value;
+  const motivo = motivoInput.value;
+  const mensaje = mensajeInput.value;
 
-function buscarOtroMensaje() {
-  let respuestaUsuario = prompt(
-    "¿Quieres buscar otro mensaje por nombre? (si/no)"
-  );
-  return respuestaUsuario.trim().toLowerCase() === "si";
-}
+  agregarMensaje(nombre, telefono, email, motivo, mensaje);
 
-function message() {
-  while (true) {
-    let respuestaUsuario = prompt("¿Quieres enviar un mensaje? (si/no)");
-
-    if (respuestaUsuario.trim().toLowerCase() === "si") {
-      let nombre = prompt("¿Cuál es tu nombre?");
-      let telefono = prompt("¿Cuál es tu teléfono?");
-      let email = prompt("¿Cuál es tu email?");
-      let motivo = prompt("¿Cuál es el motivo de tu mensaje?");
-      let mensaje = prompt("Inserta tu mensaje a continuación");
-
-      agregarMensaje(nombre, telefono, email, motivo, mensaje);
-
-      alert("Mensaje guardado con éxito.");
-    } else if (respuestaUsuario.trim().toLowerCase() === "no") {
-      alert("Perfecto, no simularemos un mensaje.");
-      break;
-    } else {
-      alert("No has ingresado una opción válida, ingresa 'si' o 'no'.");
-    }
-  }
+  nombreInput.value = "";
+  telefonoInput.value = "";
+  emailInput.value = "";
+  motivoInput.value = "";
+  mensajeInput.value = "";
 
   mostrarMensajes();
+});
 
-  do {
-    let nombreBuscado = prompt("Ingresa un nombre para buscar mensajes:");
-    let resultados = buscarPorNombre(nombreBuscado);
-    if (resultados.length > 0) {
-      alert("Mensajes encontrados para el nombre '" + nombreBuscado + "':");
-      for (let resultado of resultados) {
-        alert(
-          "Motivo: " + resultado.motivo + "\nMensaje: " + resultado.mensaje
-        );
-      }
-    } else {
-      alert(
-        "No se encontraron mensajes para el nombre '" + nombreBuscado + "'."
-      );
-    }
-  } while (buscarOtroMensaje());
+function mostrarMensajes() {
+  const mensajesContainer = document.querySelector("#mensajesContainer");
+  mensajesContainer.innerHTML = "";
+
+  for (let mensaje of mensajesDeContacto) {
+    const mensajeElement = document.createElement("div");
+    mensajeElement.innerHTML = `
+      <p>Nombre: ${mensaje.nombre}</p>
+      <p>Teléfono: ${mensaje.telefono}</p>
+      <p>Email: ${mensaje.email}</p>
+      <p>Motivo: ${mensaje.motivo}</p>
+      <p>Mensaje: ${mensaje.mensaje}</p>
+    `;
+    mensajesContainer.appendChild(mensajeElement);
+  }
 }
 
-message();
+mostrarMensajes();
