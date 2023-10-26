@@ -8,10 +8,8 @@ const emailInput = document.getElementById("email");
 const motivoInput = document.getElementById("motivo");
 const mensajeInput = document.getElementById("mensaje");
 
-// Inicializar la lista de mensajes desde LocalStorage al cargar la página
 let mensajesDeContacto = cargarMensajesDesdeLocalStorage();
 
-// Restaurar campos desde LocalStorage al cargar la página
 nombreInput.value = localStorage.getItem("nombre") || "";
 telefonoInput.value = localStorage.getItem("telefono") || "";
 emailInput.value = localStorage.getItem("email") || "";
@@ -30,7 +28,6 @@ function guardarMensajesEnLocalStorage() {
   );
 }
 
-// Función para agregar un mensaje
 function agregarMensaje(nombre, telefono, email, motivo, mensaje) {
   mensajesDeContacto.push({ nombre, telefono, email, motivo, mensaje });
   guardarMensajesEnLocalStorage();
@@ -42,7 +39,6 @@ function agregarMensaje(nombre, telefono, email, motivo, mensaje) {
   localStorage.setItem("mensaje", mensaje);
 }
 
-// Escuchar el evento de envío del formulario
 enviarMensajeBtn.addEventListener("click", function (event) {
   event.preventDefault();
 
@@ -53,17 +49,26 @@ enviarMensajeBtn.addEventListener("click", function (event) {
   const mensaje = mensajeInput.value;
 
   if (!nombre || !telefono || !email || !motivo || !mensaje) {
-    alert("Por favor, complete todos los campos.");
+    Swal.fire({
+      icon: "error",
+      title: "Campos incompletos",
+      text: "Por favor, complete todos los campos.",
+    });
     return;
   }
 
   agregarMensaje(nombre, telefono, email, motivo, mensaje);
 
   mostrarMensajes();
-  alert("Mensaje enviado con éxito.");
+
+  Swal.fire({
+    icon: "success",
+    title: "Mensaje enviado con éxito",
+    showConfirmButton: false,
+    timer: 1500, // Cierra automáticamente después de 1.5 segundos
+  });
 });
 
-// Mostrar mensajes en el DOM
 function mostrarMensajes() {
   const mensajesContainer = document.querySelector("#mensajesContainer");
   mensajesContainer.innerHTML = "";
@@ -81,5 +86,4 @@ function mostrarMensajes() {
   }
 }
 
-// Restaurar los mensajes en el DOM al cargar la página
 mostrarMensajes();
