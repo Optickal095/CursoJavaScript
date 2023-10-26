@@ -1,4 +1,3 @@
-// Obtener una referencia al formulario y otros elementos del DOM
 const form = document.querySelector("form");
 const enviarMensajeBtn = document.getElementById("enviarMensaje");
 
