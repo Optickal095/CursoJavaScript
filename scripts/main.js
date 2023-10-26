@@ -1,13 +1,22 @@
+// Obtener una referencia al formulario y otros elementos del DOM
 const form = document.querySelector("form");
-const nombreInput = document.querySelector('input[placeholder="Name"]');
-const telefonoInput = document.querySelector(
-  'input[placeholder="Phone Number"]'
-);
-const emailInput = document.querySelector('input[placeholder="Email"]');
-const motivoInput = document.querySelector('input[placeholder="Subject"]');
-const mensajeInput = document.querySelector("textarea");
+const enviarMensajeBtn = document.getElementById("enviarMensaje");
 
+const nombreInput = document.getElementById("nombre");
+const telefonoInput = document.getElementById("telefono");
+const emailInput = document.getElementById("email");
+const motivoInput = document.getElementById("motivo");
+const mensajeInput = document.getElementById("mensaje");
+
+// Inicializar la lista de mensajes desde LocalStorage al cargar la página
 let mensajesDeContacto = cargarMensajesDesdeLocalStorage();
+
+// Restaurar campos desde LocalStorage al cargar la página
+nombreInput.value = localStorage.getItem("nombre") || "";
+telefonoInput.value = localStorage.getItem("telefono") || "";
+emailInput.value = localStorage.getItem("email") || "";
+motivoInput.value = localStorage.getItem("motivo") || "";
+mensajeInput.value = localStorage.getItem("mensaje") || "";
 
 function cargarMensajesDesdeLocalStorage() {
   const mensajesGuardados = localStorage.getItem("mensajesDeContacto");
@@ -21,12 +30,20 @@ function guardarMensajesEnLocalStorage() {
   );
 }
 
+// Función para agregar un mensaje
 function agregarMensaje(nombre, telefono, email, motivo, mensaje) {
   mensajesDeContacto.push({ nombre, telefono, email, motivo, mensaje });
   guardarMensajesEnLocalStorage();
+  // Actualizar los campos del último mensaje
+  localStorage.setItem("nombre", nombre);
+  localStorage.setItem("telefono", telefono);
+  localStorage.setItem("email", email);
+  localStorage.setItem("motivo", motivo);
+  localStorage.setItem("mensaje", mensaje);
 }
 
-form.addEventListener("submit", function (event) {
+// Escuchar el evento de envío del formulario
+enviarMensajeBtn.addEventListener("click", function (event) {
   event.preventDefault();
 
   const nombre = nombreInput.value;
@@ -35,17 +52,18 @@ form.addEventListener("submit", function (event) {
   const motivo = motivoInput.value;
   const mensaje = mensajeInput.value;
 
+  if (!nombre || !telefono || !email || !motivo || !mensaje) {
+    alert("Por favor, complete todos los campos.");
+    return;
+  }
+
   agregarMensaje(nombre, telefono, email, motivo, mensaje);
 
-  nombreInput.value = "";
-  telefonoInput.value = "";
-  emailInput.value = "";
-  motivoInput.value = "";
-  mensajeInput.value = "";
-
   mostrarMensajes();
+  alert("Mensaje enviado con éxito.");
 });
 
+// Mostrar mensajes en el DOM
 function mostrarMensajes() {
   const mensajesContainer = document.querySelector("#mensajesContainer");
   mensajesContainer.innerHTML = "";
@@ -63,4 +81,5 @@ function mostrarMensajes() {
   }
 }
 
+// Restaurar los mensajes en el DOM al cargar la página
 mostrarMensajes();
