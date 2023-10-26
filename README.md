@@ -36,3 +36,22 @@ Luego de enviar mensajes, se pedirá ingresar un nombre para buscar mensajes env
 Si existen, se mostrarán todos los mensajes encontrados con ese nombre.
 
 Para salir del ciclo, se debe escribir no cuando lo solicite.
+
+### **Pre Entrega 3**
+
+Se agregaron:
+
+```bash
+ - Interacción con HTML
+ - Modificación del DOM
+ - JSON
+ - localStorage
+ - Sweet Alert
+
+```
+
+Ahora, para enviar un mensaje, es necesario rellenar los campos necesarios y luego presionar el botón `Enviar Mensaje`.
+
+Si todos los campos están rellenos, aparecerá un mensaje de éxito, en el caso de que el formulario esté incompleto, saldrá un mensaje un mensaje de alerta.
+
+Si se refresca la página, los inputs estarán completos automáticamente con lo enviado en el mensaje anterior.
