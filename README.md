@@ -53,5 +53,5 @@ Se agregaron:
 Ahora, para enviar un mensaje, es necesario rellenar los campos necesarios y luego presionar el botón `Enviar Mensaje`.
 
 Si todos los campos están rellenos, aparecerá un mensaje de éxito, en el caso de que el formulario esté incompleto, saldrá un mensaje un mensaje de alerta.
-
+ 
 Si se refresca la página, los inputs estarán completos automáticamente con lo enviado en el mensaje anterior.
