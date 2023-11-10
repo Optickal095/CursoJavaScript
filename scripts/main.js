@@ -101,6 +101,12 @@ function mostrarMensajes() {
   const mensajesContainer = document.querySelector("#mensajesContainer");
   mensajesContainer.innerHTML = "";
 
+  if (mensajesDeContacto.length === 0) {
+    // Si no hay mensajes, mostrar mensaje indicando que no existen
+    mensajesContainer.innerHTML = "<p>No existen mensajes.</p>";
+    return;
+  }
+
   for (let mensaje of mensajesDeContacto) {
     const mensajeElement = document.createElement("div");
     mensajeElement.innerHTML = `
