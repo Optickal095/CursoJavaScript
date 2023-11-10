@@ -30,7 +30,6 @@ function guardarMensajesEnLocalStorage() {
 function agregarMensaje(nombre, telefono, email, motivo, mensaje) {
   mensajesDeContacto.push({ nombre, telefono, email, motivo, mensaje });
   guardarMensajesEnLocalStorage();
-  // Actualizar los campos del último mensaje
   localStorage.setItem("nombre", nombre);
   localStorage.setItem("telefono", telefono);
   localStorage.setItem("email", email);
@@ -64,7 +63,7 @@ enviarMensajeBtn.addEventListener("click", function (event) {
     icon: "success",
     title: "Mensaje enviado con éxito",
     showConfirmButton: false,
-    timer: 1500, // Cierra automáticamente después de 1.5 segundos
+    timer: 1500,
   });
 });
 
