@@ -38,7 +38,7 @@ function agregarMensaje(nombre, telefono, email, motivo, mensaje) {
 }
 
 // Evento clic del botón de enviar mensaje
-enviarMensajeBtn.addEventListener("click", function (event) {
+enviarMensajeBtn.addEventListener("click", async function (event) {
   event.preventDefault();
 
   // Obtener valores de los campos de entrada
@@ -59,17 +59,42 @@ enviarMensajeBtn.addEventListener("click", function (event) {
     return;
   }
 
-  // Agregar mensaje y mostrar mensajes actualizados
-  agregarMensaje(nombre, telefono, email, motivo, mensaje);
-  mostrarMensajes();
-
-  // Mostrar mensaje de éxito con SweetAlert2
-  Swal.fire({
-    icon: "success",
-    title: "Mensaje enviado con éxito",
+  // Mostrar mensaje de carga
+  const loadingSwal = Swal.fire({
+    title: "Enviando mensaje...",
+    allowOutsideClick: false,
     showConfirmButton: false,
-    timer: 1500, // Cierra automáticamente después de 1.5 segundos
+    willOpen: () => {
+      Swal.showLoading();
+    },
   });
+
+  try {
+    // Simula un tiempo de espera (puedes reemplazar esto con tu lógica de envío real)
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    // Agregar mensaje y mostrar mensajes actualizados
+    agregarMensaje(nombre, telefono, email, motivo, mensaje);
+    mostrarMensajes();
+
+    // Mostrar mensaje de éxito con SweetAlert2
+    Swal.fire({
+      icon: "success",
+      title: "Mensaje enviado con éxito",
+      showConfirmButton: false,
+      timer: 1500, // Cierra automáticamente después de 1.5 segundos
+    });
+  } catch (error) {
+    // En caso de error, mostrar mensaje de error
+    Swal.fire({
+      icon: "error",
+      title: "Error al enviar el mensaje",
+      text: "Hubo un problema al enviar el mensaje. Por favor, inténtelo de nuevo.",
+    });
+  } finally {
+    // Cerrar mensaje de carga
+    loadingSwal.close();
+  }
 });
 
 function mostrarMensajes() {
