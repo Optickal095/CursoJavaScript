@@ -53,5 +53,26 @@ Se agregaron:
 Ahora, para enviar un mensaje, es necesario rellenar los campos necesarios y luego presionar el botón `Enviar Mensaje`.
 
 Si todos los campos están rellenos, aparecerá un mensaje de éxito, en el caso de que el formulario esté incompleto, saldrá un mensaje un mensaje de alerta.
- 
+
 Si se refresca la página, los inputs estarán completos automáticamente con lo enviado en el mensaje anterior.
+
+### **Proyecto Final**
+
+Se agregaron:
+
+```bash
+- Mensajes enviados con anterioridad
+- Manejo de errores
+- async/await
+- Promise
+- Alert mientras se envía el mensaje
+- Pequeñas modificaciones
+```
+
+Ahora, cuando se envié un mensaje, aparecerá un mensaje indicando que se está enviando el mensaje, esto, mientras internamente ocurre la promesa.
+
+Si el mensaje es enviado correctamente, aparecerá un mensaje indicando el éxito de la operación.
+
+Si algunos de los campos no está rellenado, saldrá un mensaje de alerta indicando que se deben llenar todos los apartados.
+
+Una vez enviado el mensaje, en la parte inferior del formulario, aparecerán todos los mensajes que se hayan enviado, estos mensajes quedan almacenados en "localStorage", por ende, se puede eliminar "localStorage" para que el contador de mensajes vuelva a cero.
