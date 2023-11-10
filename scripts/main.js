@@ -37,16 +37,20 @@ function agregarMensaje(nombre, telefono, email, motivo, mensaje) {
   localStorage.setItem("mensaje", mensaje);
 }
 
+// Evento clic del botón de enviar mensaje
 enviarMensajeBtn.addEventListener("click", function (event) {
   event.preventDefault();
 
+  // Obtener valores de los campos de entrada
   const nombre = nombreInput.value;
   const telefono = telefonoInput.value;
   const email = emailInput.value;
   const motivo = motivoInput.value;
   const mensaje = mensajeInput.value;
 
+  // Validar que todos los campos estén completos
   if (!nombre || !telefono || !email || !motivo || !mensaje) {
+    // Mostrar mensaje de error con SweetAlert2
     Swal.fire({
       icon: "error",
       title: "Campos incompletos",
@@ -55,15 +59,16 @@ enviarMensajeBtn.addEventListener("click", function (event) {
     return;
   }
 
+  // Agregar mensaje y mostrar mensajes actualizados
   agregarMensaje(nombre, telefono, email, motivo, mensaje);
-
   mostrarMensajes();
 
+  // Mostrar mensaje de éxito con SweetAlert2
   Swal.fire({
     icon: "success",
     title: "Mensaje enviado con éxito",
     showConfirmButton: false,
-    timer: 1500,
+    timer: 1500, // Cierra automáticamente después de 1.5 segundos
   });
 });
 

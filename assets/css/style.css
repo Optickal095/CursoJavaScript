@@ -53,7 +53,8 @@ html {
 
 /* HOME */
 .home {
-  background: linear-gradient(to top, rgba(30, 35, 38, 0.8), rgb(30, 35, 38)), url(../images/background.jpg);
+  background: linear-gradient(to top, rgba(30, 35, 38, 0.8), rgb(30, 35, 38)),
+    url(../images/background.jpg);
   background-size: cover;
   height: 100vh;
   color: #fff;
@@ -280,6 +281,13 @@ html {
   display: inline-block;
   margin-right: 20px;
 }
+#mensajes * {
+  background: #212e5c;
+  color: white;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 10px;
+}
 
 /* SKILLS */
 .skills {
@@ -405,4 +413,4 @@ footer .up {
   border-radius: 50%;
   line-height: 50px;
   font-size: 18px;
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */
